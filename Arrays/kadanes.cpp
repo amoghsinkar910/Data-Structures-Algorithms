@@ -26,10 +26,6 @@ typedef vector<ll> vll;
 typedef vector<vll> vvll;
 typedef double ld;  
 
-const ll N = 1e5 + 5;
-const ll mod = 1e9 + 7;
-const ll INF = 1e9;
-
 int maxSubarraySum(int a[],int n)
 {
     int mx=0,global_mx=INT_MIN,i;
