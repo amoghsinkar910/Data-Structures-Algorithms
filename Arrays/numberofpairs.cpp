@@ -49,6 +49,8 @@ int helper(int x, int y[], int n, int excep[])
 
 ll countPairs(int x[], int y[], int m, int n)
 {
+    // x^y > y^x iff x<y, but it has some exceptions such as 1^0 > 0^1 whereas 1>0
+    // so we subtract such exceptions {(1,0),(2,3),(2,4)}
     int excep[5] = {0};
     int i = 0;
     for (i = 0; i < n; i++)
