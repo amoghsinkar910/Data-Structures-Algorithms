@@ -32,6 +32,9 @@ const ll INF = 1e9;
 
 void sort012(int a[], int n)
 {
+    // Dutch flag method => four regions low, mid ,high & unknown region
+    // low=>0, mid=>1, high=>2
+    // swap accordingly while iterating through the array and modify the three pointers
     int low=0,mid=0,high=n-1;
     while(mid<=high)
     {
