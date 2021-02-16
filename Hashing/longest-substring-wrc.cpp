@@ -58,6 +58,24 @@ int lengthOfLongestSubstring(string s)
     return ans;
 }
 
+int lengthOfLongestSubstringOptimised(string s) 
+    {
+        int n = int(s.size()),i,j;
+        map<char,int> mp;
+        j=0;
+        int ans=0;
+        for(i=0;i<n;i++)
+        {
+            if(mp.find(s[i])!=mp.end())
+            {
+                j=max(j,mp[s[i]]+1);
+            }
+            mp[s[i]]=i;
+            ans = max(ans,i-j+1);
+        }
+        return ans;
+    }
+
 int main()
 {
     ios_base::sync_with_stdio(0);
