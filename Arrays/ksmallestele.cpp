@@ -70,6 +70,20 @@ int kthSmallest(int a[], int l, int r, int k)
     return INT_MAX;
 }
 
+//using max heap => priority queue
+int kthSmallestpq(int a[], int l, int r, int k) 
+{
+    priority_queue<int> pq;
+    for(int i=l;i<=r;i++)
+    {
+        pq.push(a[i]);
+        if(pq.size()>k){
+            pq.pop();
+        }
+    }
+    return pq.top();
+}
+
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -81,7 +95,7 @@ int main()
     int a[n];
     for0(i, n) cin >> a[i];
 
-    cout << kthSmallest(a, 0, n - 1, k) << "\n";
+    cout << kthSmallestpq(a, 0, n - 1, k) << "\n";
 
     return 0;
 }
