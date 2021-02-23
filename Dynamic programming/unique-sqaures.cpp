@@ -33,25 +33,16 @@ const ll INF = 1e9;
 int numSquares(int n)
 {
     int dp[n + 1], i, j;
-
+    dp[0]=0;
     if (n <= 3)
         return n;
 
-    dp[0] = 0;
-    dp[1] = 1;
-    dp[2] = 2;
-    dp[3] = 3;
-
-    for (i = 4; i <= n; i++)
+    for (i = 1; i <= n; i++)
     {
         dp[i] = i;
         for (j = 1; j <= sqrt(i); j++)
         {
-            int sq = j * j;
-            if (sq > i)
-                break;
-
-            dp[i] = min(dp[i], 1 + dp[i - sq]);
+            dp[i] = min(dp[i], 1 + dp[i - j*j]);
         }
     }
 
