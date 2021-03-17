@@ -60,6 +60,39 @@ bool closeStrings(string a, string b)
     return false;
 }
 
+bool pqcloseStrings(string a, string b)
+{
+    int n = a.size(), m = b.size(), i;
+    if (m != n)
+        return false;
+
+    unordered_map<char, int> m1, m2;
+    priority_queue<pair<int, char>> p1, p2;
+
+    for (i = 0; i < n; i++)
+    {
+        m1[a[i]]++;
+        m2[b[i]]++;
+    }
+
+    for (auto x : m1)
+        p1.push({x.second, x.first});
+
+    for (auto x : m2)
+        p2.push({x.second, x.first});
+
+    while (p1.size() > 0 && p2.size() > 0)
+    {
+        if (m1[p2.top().second] == 0)
+            return false;
+        if (p1.top().first != p2.top().first)
+            return false;
+        p1.pop();
+        p2.pop();
+    }
+    return true;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -71,6 +104,7 @@ int main()
         string a, b;
         cin >> a >> b;
         cout << closeStrings(a, b) << "\n";
+        cout << pqcloseStrings(a, b) << "\n";
     }
 
     return 0;
