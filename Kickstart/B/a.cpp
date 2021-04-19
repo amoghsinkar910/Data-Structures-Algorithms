@@ -56,8 +56,7 @@ int main()
             else
                 ans[i] = 1;
         }
-        cout << "Case #" << T << ":"
-             << " ";
+        cout << "Case #" << T << ":" << " ";
         for (auto it : ans)
             cout << it << " ";
         cout << "\n";
