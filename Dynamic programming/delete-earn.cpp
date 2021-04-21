@@ -32,6 +32,7 @@ const ll mod = 1e9 + 7;
 const ll INF = 1e9;
 
 int deleteAndEarn(vector<int> &a)
+
 {
 
     int i, mx = 0;
