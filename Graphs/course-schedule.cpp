@@ -31,9 +31,10 @@ typedef double ld;
 const ll N = 1e5 + 5;
 const ll mod = 1e9 + 7;
 const ll INF = 1e9;
+vector<int> g[N];
 
 //here we have to check for cycles in directed graph using dfs
-bool dfs(int i, int n, vector<bool> &vis, vector<int> &ans, vector<int> g[n])
+bool dfs(int i, int n, vector<bool> &vis, vector<int> &ans)
 {
     vis[i] = true;
     ans[i] = true;
@@ -41,7 +42,7 @@ bool dfs(int i, int n, vector<bool> &vis, vector<int> &ans, vector<int> g[n])
     {
         if (!vis[node])
         {
-            if (dfs(node, n, vis, ans, g))
+            if (dfs(node, n, vis, ans))
                 return true;
         }
         else if (ans[node])
@@ -53,7 +54,7 @@ bool dfs(int i, int n, vector<bool> &vis, vector<int> &ans, vector<int> g[n])
 bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
 {
     int n = numCourses;
-    vector<int> g[n];
+
     for (int i = 0; i < prerequisites.size(); i++)
         g[prerequisites[i][1]].push_back(prerequisites[i][0]);
     vector<bool> vis(n, false);
@@ -63,7 +64,7 @@ bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
     {
         if (!vis[i])
         {
-            if (dfs(i, n, vis, ans, g))
+            if (dfs(i, n, vis, ans))
             {
                 flag = true;
                 break;
