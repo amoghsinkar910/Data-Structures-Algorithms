@@ -30,45 +30,50 @@ const ll N = 1e5 + 5;
 const ll mod = 1e9 + 7;
 const ll INF = 1e9;
 
-void rotate(vector<int> &a, int k)
+void rec(vector<int> &a, int target, int idx, vector<vector<int>> &ans, vector<int> &temp)
 {
-    int i, j;
-    k = k % a.size();
-    vector<int> ans = a;
-    for (i = 0; i < a.size(); i++)
+    if (target < 0)
+        return;
+    if (target == 0)
+        ans.push_back(temp);
+
+    for (int i = idx; i < a.size(); i++)
     {
-        ans[(i + k) % (a.size())] = a[i];
+        temp.push_back(a[i]);
+        if (target >= a[i])
+            rec(a, target - a[i], i, ans, temp);
+        temp.pop_back();
     }
-    a = ans;
 }
 
-void rotate1(vector<int> &a, int k)
+vector<vector<int>> combinationSum(vector<int> &a, int target)
 {
-    int i, j;
-    k = k % a.size();
-    reverse(a.begin(), a.end());
-    reverse(a.begin(), a.begin() + k);
-    reverse(a.begin() + k, a.end());
+    vector<vector<int>> ans;
+    vector<int> temp;
+    rec(a, target, 0, ans, temp);
+    return ans;
 }
 
 int main()
 {
     ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
 
     {
         ll i, j, k, n, cnt = 0;
         cin >> n >> k;
         vector<int> a;
         for (i = 0; i < n; i++)
-            cin >> j, a.pb(j);
-
-        rotate(a, k);
-        //rotate1(a,k);
-        for (auto it : a)
-            cout << it << " ";
-        cout << "\n";
+        {
+            cin >> j;
+            a.push_back(j);
+        }
+        vector<vector<int>> fin = combinationSum(a, k);
+        for (auto it : fin)
+        {
+            for (auto x : it)
+                cout << x << " ";
+            cout << "\n";
+        }
     }
 
     return 0;
