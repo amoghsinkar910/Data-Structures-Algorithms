@@ -30,6 +30,12 @@ const ll N = 1e5 + 5;
 const ll mod = 1e9 + 7;
 const ll INF = 1e9;
 
+//xor(l,r) = pref[r]^pref[l-1]
+//because pref[r] = (a[0]^a[1]....a[l-1]^a[l]...a[r]) 
+//and pref[l-1] = (a[0]^a[1]....a[l-1])
+//so pref[r]^pref[l-1] = a[l]^..a[r] since (a[0]^a[1]....a[l-1])^(a[0]^a[1]....a[l-1]) = 0
+//using x^y^x = y
+
 vector<int> xorQueries(vector<int> &a, vector<vector<int>> &q)
 {
     int i, n = a.size(), m = q.size(), x = 0;
