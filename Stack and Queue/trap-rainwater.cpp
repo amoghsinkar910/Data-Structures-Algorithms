@@ -42,10 +42,9 @@ int trap(vector<int> &a)
         while (!st.empty() && a[cur] > a[st.top()])
         {
             int x = st.top();
-            st.pop();
+            st.pop();   
             if (st.empty())
                 break;
-
             int dist = cur - st.top() - 1;
             int h = min(a[cur], a[st.top()]) - a[x];
             ans += h * dist;
@@ -62,6 +61,7 @@ int main()
     cout.tie(0);
 
     ll i, j, k, n, cnt = 0;
+    cin>>n;
     vector<int> a;
     for (i = 0; i < n; i++)
     {

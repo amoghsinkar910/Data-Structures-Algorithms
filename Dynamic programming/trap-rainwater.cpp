@@ -67,6 +67,7 @@ int main()
 
     ll i, j, k, n, cnt = 0;
     vector<int> a;
+    cin>>n;
     for (i = 0; i < n; i++)
     {
         cin >> j;
