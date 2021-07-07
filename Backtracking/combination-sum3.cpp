@@ -64,8 +64,8 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    int n, k;
-    cin >> n >> k;
+    int k, n;
+    cin >> k >> n;
     vector<vector<int>> fin = combinationSum3(k, n);
     for (auto it : fin)
     {
