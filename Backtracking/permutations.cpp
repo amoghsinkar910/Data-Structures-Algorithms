@@ -79,6 +79,33 @@ vector<vector<int>> permuteBacktrack(vector<int> &a)
     return ans;
 }
 
+void rec2(int idx, vector<int> &a, vector<vector<int>> &ans)
+{
+    //base case
+    if (idx == a.size())
+    {
+        ans.push_back(a);
+        return;
+    }
+
+    //recursive case
+    for (int i = idx; i < a.size(); i++)
+    {
+        swap(a[i], a[idx]);
+        rec(idx + 1, a, ans);
+        swap(a[i], a[idx]);
+    }
+}
+
+vector<vector<int>> permute2(vector<int> &a)
+{
+    vector<vector<int>> ans;
+
+    rec(0, a, ans);
+
+    return ans;
+}
+
 int main()
 {
     ios_base::sync_with_stdio(0);
@@ -86,12 +113,12 @@ int main()
     cout.tie(0);
 
     int i, j, k, n, cnt = 0;
-    cin>>n;
+    cin >> n;
     vector<int> a;
-    for0(i,n) cin>>k,a.pb(k);
+    for0(i, n) cin >> k, a.pb(k);
 
     //permuteSTL(a)
     //permuteBacktrack(a)
-    
+
     return 0;
 }
