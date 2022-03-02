@@ -47,10 +47,7 @@ public:
         }
         
         if(cnt==0) return max(0,days);
-        return -1;
-        
-        
-        
+        return -1; 
     }
 };
 
